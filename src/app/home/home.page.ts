@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PruebaService } from './../prueba.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
-
+  txt:any;
+  constructor(public pruebaService: PruebaService) {
+    this.pruebaService.prueba()
+        .then(data => {
+          this.txt = data;
+          console.log(this.txt);
+        });
+  }
 }
